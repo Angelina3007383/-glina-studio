@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Студия «Глина» — керамика и гончарное мастерство в Минске</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: #f5ede4;
+    color: #3d2817;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ШАПКА */
+  header {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #8b4513 0%, #a0522d 30%, #cd853f 70%, #deb887 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15), transparent 60%),
+                radial-gradient(circle at 70% 80%, rgba(0,0,0,0.2), transparent 50%);
+  }
+
+  .header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+  }
+
+  .logo {
+    font-size: 72px;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  h1 {
+    font-size: 56px;
+    color: #fff8f0;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    letter-spacing: 3px;
+    font-weight: 400;
+  }
+
+  .tagline {
+    font-size: 20px;
+    color: #ffe4c4;
+    font-style: italic;
+    margin-bottom: 35px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+
+  .header-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 15px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: #fff8f0;
+    color: #8b4513;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff8f0;
+    border: 2px solid #fff8f0;
+  }
+
+  .btn-outline:hover {
+    background: #fff8f0;
+    color: #8b4513;
+  }
+
+  /* СЕКЦИИ */
+  section {
+    padding: 80px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 38px;
+    color: #8b4513;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: #a0522d;
+    font-style: italic;
+    margin-bottom: 50px;
+    font-size: 17px;
+  }
+
+  /* О НАС */
+  .about-text {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    color: #5a3d28;
+    line-height: 1.9;
+  }
+
+  .about-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 50px;
+  }
+
+  .feature {
+    text-align: center;
+    padding: 30px 20px;
+    background: #fff8f0;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(139, 69, 19, 0.08);
+    border: 1px solid #f0d9c0;
+    transition: transform 0.3s;
+  }
+
+  .feature:hover { transform: translateY(-5px); }
+
+  .feature-icon {
+    font-size: 44px;
+    margin-bottom: 15px;
+  }
+
+  .feature-title {
+    font-size: 19px;
+    color: #8b4513;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .feature-text {
+    font-size: 15px;
+    color: #7a5a40;
+  }
+
+  /* МАСТЕР-КЛАССЫ */
+  .workshops {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+
+  .workshop {
+    background: #fff8f0;
+    border-radius: 22px;
+    padding: 32px 28px;
+    box-shadow: 0 6px 25px rgba(139, 69, 19, 0.1);
+    border: 1px solid #f0d9c0;
+    transition: transform 0.3s;
+    position: relative;
+  }
+
+  .workshop:hover { transform: translateY(-6px); }
+
+  .workshop-badge {
+    display: inline-block;
+    background: #cd853f;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+
+  .workshop-title {
+    font-size: 22px;
+    color: #8b4513;
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+
+  .workshop-desc {
+    font-size: 15px;
+    color: #6a4a30;
+    margin-bottom: 18px;
+    line-height: 1.7;
+  }
+
+  .workshop-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #8b4513;
+    padding-top: 18px;
+    border-top: 1px dashed #d9b896;
+    margin-bottom: 20px;
+  }
+
+  .workshop-price {
+    font-size: 24px;
+    color: #8b4513;
+    font-weight: bold;
+  }
+
+  .workshop-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    background: linear-gradient(135deg, #8b4513, #a0522d);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.3s;
+  }
+
+  .workshop-btn:hover {
+    background: linear-gradient(135deg, #a0522d, #cd853f);
+  }
+
+  /* ГАЛЕРЕЯ */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    margin-top: 40px;
+  }
+
+  .gallery-item {
+    aspect-ratio: 1;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #e8d4bf, #d9b896);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid #f0d9c0;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(139, 69, 19, 0.2);
+  }
+
+  /* МАГАЗИН */
+  .shop {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+  }
+
+  .product {
+    background: #fff8f0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 25px rgba(139, 69, 19, 0.1);
+    transition: transform 0.3s;
+    border: 1px solid #f0d9c0;
+  }
+
+  .product:hover { transform: translateY(-5px); }
+
+  .product-image {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #e8d4bf, #cd853f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+  }
+
+  .product-info {
+    padding: 22px;
+  }
+
+  .product-name {
+    font-size: 18px;
+    color: #8b4513;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  .product-desc {
+    font-size: 14px;
+    color: #7a5a40;
+    margin-bottom: 15px;
+    min-height: 40px;
+  }
+
+  .product-price {
+    font-size: 22px;
+    color: #8b4513;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .product-btn {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid #8b4513;
+    color: #8b4513;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s;
+  }
+
+  .product-btn:hover {
+    background: #8b4513;
+    color: #fff;
+  }
+
+  /* ОТЗЫВЫ */
+  .reviews {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+
+  .review {
+    background: #fff8f0;
+    padding: 30px 25px;
+    border-radius: 20px;
+    border-left: 5px solid #cd853f;
+    box-shadow: 0 4px 20px rgba(139, 69, 19, 0.08);
+  }
+
+  .review-text {
+    font-style: italic;
+    color: #5a3d28;
+    font-size: 16px;
+    margin-bottom: 15px;
+    line-height: 1.7;
+  }
+
+  .review-author {
+    color: #8b4513;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  /* КОНТАКТЫ */
+  .contacts {
+    background: linear-gradient(135deg, #8b4513, #5a3d28);
+    color: #fff8f0;
+    padding: 80px 20px;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .contacts h2 { color: #fff8f0; }
+
+  .contacts .section-subtitle { color: #ffe4c4; }
+
+  .contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 35px;
+  }
+
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.3s;
+    background: #fff8f0;
+    color: #8b4513;
+  }
+
+  .contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .contact-info {
+    margin-top: 40px;
+    font-size: 16px;
+    color: #ffe4c4;
+    line-height: 2;
+  }
+
+  /* ПОДВАЛ */
+  footer {
+    background: #2a1a0f;
+    color: #a08770;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 14px;
+  }
+
+  /* АДАПТИВ */
+  @media (max-width: 600px) {
+    h1 { font-size: 38px; }
+    .tagline { font-size: 17px; }
+    h2 { font-size: 28px; }
+    section { padding: 60px 18px; }
+    .logo { font-size: 56px; }
+    .header-buttons { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 280px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ШАПКА -->
+<header>
+  <div class="header-content">
+    <div class="logo">🏺</div>
+    <h1>ГЛИНА</h1>
+    <p class="tagline">студия авторской керамики и гончарного мастерства</p>
+    <div class="header-buttons">
+      <a href="#workshops" class="btn btn-primary">Записаться на мастер-класс</a>
+      <a href="#shop" class="btn btn-outline">Купить изделия</a>
+    </div>
+  </div>
+</header>
+
+<!-- О НАС -->
+<section>
+  <h2>О нашей студии</h2>
+  <p class="section-subtitle">место, где рождается тепло</p>
+  <p class="about-text">
+    Мы — команда мастеров, влюблённых в глину. В нашей студии в центре Минска каждый может прикоснуться к древнему искусству керамики: создать свою чашку, тарелку или вазу, почувствовать, как податливая глина превращается в красивое изделие под вашими руками.
+  </p>
+  <div class="about-features">
+    <div class="feature">
+      <div class="feature-icon">👐</div>
+      <div class="feature-title">Ручная работа</div>
+      <div class="feature-text">Каждое изделие уникально — от формы до глазури</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔥</div>
+      <div class="feature-title">Обжиг в печи</div>
+      <div class="feature-text">Настоящая керамическая печь — всё как у мастеров</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🎨</div>
+      <div class="feature-title">Мастер-классы</div>
+      <div class="feature-text">Для взрослых, детей и компаний</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💝</div>
+      <div class="feature-title">Индивидуальные заказы</div>
+      <div class="feature-text">Создадим изделие по вашему эскизу</div>
+    </div>
+  </div>
+</section>
+
+<!-- МАСТЕР-КЛАССЫ -->
+<section id="workshops" style="background: #efe1d1;">
+  <h2>Мастер-классы</h2>
+  <p class="section-subtitle">выберите то, что вам по душе</p>
+  <div class="workshops">
+    <div class="workshop">
+      <div class="workshop-badge">Для взрослых</div>
+      <div class="workshop-title">Гончарный круг</div>
+      <div class="workshop-desc">Создадите свою чашку или тарелку на настоящем гончарном круге. Идеально для первого знакомства с глиной.</div>
+      <div class="workshop-info">
+        <span>2 часа</span>
+        <span>1–6 человек</span>
+      </div>
+      <div class="workshop-price">80 BYN</div>
+      <a href="#contacts" class="workshop-btn">Записаться</a>
+    </div>
+    <div class="workshop">
+      <div class="workshop-badge">Парный</div>
+      <div class="workshop-title">Свидание за гончарным кругом</div>
+      <div class="workshop-desc">Романтический мастер-класс для двоих. Создадите парные чашки и заберёте их после обжига.</div>
+      <div class="workshop-info">
+        <span>2,5 часа</span>
+        <span>2 человека</span>
+      </div>
+      <div class="workshop-price">150 BYN</div>
+      <a href="#contacts" class="workshop-btn">Записаться</a>
+    </div>
+    <div class="workshop">
+      <div class="workshop-badge">Для детей</div>
+      <div class="workshop-title">Лепка для малышей</div>
+      <div class="workshop-desc">Весёлое занятие для детей от 6 лет. Лепим фигурки, зверей, сказочных персонажей.</div>
+      <div class="workshop-info">
+        <span>1,5 часа</span>
+        <span>до 8 детей</span>
+      </div>
+      <div class="workshop-price">45 BYN</div>
+      <a href="#contacts" class="workshop-btn">Записаться</a>
+    </div>
+    <div class="workshop">
+      <div class="workshop-badge">Корпоративный</div>
+      <div class="workshop-title">Тимбилдинг на гончарном круге</div>
+      <div class="workshop-desc">Незабываемый корпоратив для вашей команды. Работа в парах, соревнования, много смеха и глины.</div>
+      <div class="workshop-info">
+        <span>3 часа</span>
+        <span>до 20 человек</span>
+      </div>
+      <div class="workshop-price">от 500 BYN</div>
+      <a href="#contacts" class="workshop-btn">Записаться</a>
+    </div>
+  </div>
+</section>
+
+<!-- ГАЛЕРЕЯ -->
+<section>
+  <h2>Наши работы</h2>
+  <p class="section-subtitle">каждая чашка — с историей</p>
+  <div class="gallery">
+    <div class="gallery-item">🏺</div>
+    <div class="gallery-item">☕</div>
+    <div class="gallery-item">🍶</div>
+    <div class="gallery-item">🌸</div>
+    <div class="gallery-item">🥣</div>
+    <div class="gallery-item">🍵</div>
+  </div>
+</section>
+
+<!-- МАГАЗИН -->
+<section id="shop" style="background: #efe1d1;">
+  <h2>Изделия ручной работы</h2>
+  <p class="section-subtitle">можно купить или заказать</p>
+  <div class="shop">
+    <div class="product">
+      <div class="product-image">☕</div>
+      <div class="product-info">
+        <div class="product-name">Керамическая чашка</div>
+        <div class="product-desc">Авторская чашка с ручной росписью. В наличии 8 штук.</div>
+        <div class="product-price">45 BYN</div>
+        <a href="#contacts" class="product-btn">Заказать</a>
+      </div>
+    </div>
+    <div class="product">
+      <div class="product-image">🍶</div>
+      <div class="product-info">
+        <div class="product-name">Ваза для цветов</div>
+        <div class="product-desc">Изящная ваза, ручная лепка. Подходит для сухих и живых цветов.</div>
+        <div class="product-price">70 BYN</div>
+        <a href="#contacts" class="product-btn">Заказать</a>
+      </div>
+    </div>
+    <div class="product">
+      <div class="product-image">🍵</div>
+      <div class="product-info">
+        <div class="product-name">Чайный набор</div>
+        <div class="product-desc">Чайник и 2 чашки в едином стиле. Идеальный подарок.</div>
+        <div class="product-price">140 BYN</div>
+        <a href="#contacts" class="product-btn">Заказать</a>
+      </div>
+    </div>
+    <div class="product">
+      <div class="product-image">🥣</div>
+      <div class="product-info">
+        <div class="product-name">Салатник</div>
+        <div class="product-desc">Глубокая тарелка с авторской глазурью. Под заказ — 7 дней.</div>
+        <div class="product-price">55 BYN</div>
+        <a href="#contacts" class="product-btn">Заказать</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ОТЗЫВЫ -->
+<section>
+  <h2>Отзывы</h2>
+  <p class="section-subtitle">что говорят наши гости</p>
+  <div class="reviews">
+    <div class="review">
+      <p class="review-text">«Ходили с мужем на парный мастер-класс — это было волшебно! Своими руками сделали чашки, теперь пьём из них кофе каждое утро. Спасибо!»</p>
+      <div class="review-author">— Анна и Дмитрий</div>
+    </div>
+    <div class="review">
+      <p class="review-text">«Отмечали корпоратив в студии — коллеги до сих пор вспоминают. Атмосфера уютная, мастера внимательные. Рекомендую!»</p>
+      <div class="review-author">— Елена, компания IT-решений</div>
+    </div>
+    <div class="review">
+      <p class="review-text">«Купила набор посуды в подарок маме. Качество потрясающее, всё сделано с душой. Обязательно вернусь ещё.»</p>
+      <div class="review-author">— Ольга</div>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<div class="contacts" id="contacts">
+  <h2>Свяжитесь с нами</h2>
+  <p class="section-subtitle">ответим на все вопросы и запишем на мастер-класс</p>
+
+  <div class="contact-buttons">
+    <a href="https://t.me/glina_studio" class="contact-btn">Telegram</a>
+    <a href="https://wa.me/375291234567" class="contact-btn">WhatsApp</a>
+    <a href="https://instagram.com/glina_studio" class="contact-btn">Instagram</a>
+  </div>
+
+  <div class="contact-info">
+    <p>г. Минск, ул. Керамическая, 15</p>
+    <p>+375 (29) 123-45-67</p>
+    <p>Ежедневно с 10:00 до 21:00</p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Студия керамики «Глина» · Минск</p>
+  <p style="margin-top: 8px;">Сделано с любовью к глине 🏺</p>
+</footer>
+
+</body>
+</html>
